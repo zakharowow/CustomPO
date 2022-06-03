@@ -21,7 +21,7 @@ public class BaseClass {
     }
     public static void initPage(String pageName) {
         HashSet<Object> pagesSet = new HashSet<>();
-        Class<?> clazz = Pages.class;
+        Class<?> clazz = BasePages.class;
         Field[] pages = clazz.getDeclaredFields();
         BaseClass pageToInit = null;
         for (Field page : pages) {

@@ -2,7 +2,7 @@ package elements;
 
 import meta.Page;
 
-public class Pages extends BaseClass {
+public class BasePages extends BaseClass {
     @Page("Главная")
     public BaseClass mainPage = new MainPage();
     @Page("Результат поиска")
