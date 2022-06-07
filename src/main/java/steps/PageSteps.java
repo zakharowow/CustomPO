@@ -1,12 +1,13 @@
 package steps;
 
-import elements.BaseClass;
 import io.cucumber.java.bg.И;
+
+import static elements.BaseClass.initPage;
 
 public class PageSteps {
 
     @И("^загружается страница \"(.+)\"$")
-    public void clickElement(String pageName) {
-        BaseClass.initPage(pageName);
+    public void loadPage(String pageName) {
+        initPage(pageName);
     }
 }
