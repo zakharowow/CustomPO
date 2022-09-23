@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage extends BaseClass {
     @PageElement("Логотип")
-    public SelenideElement logo = $(byAttribute("alt", "Google"));
+    public SelenideElement logo = $(byXpath("(//img)[2]"));
     @PageElement("Поисковая строка")
     public SelenideElement searchTextField = $(byXpath("(//*[@name='q'])[1]"));
     @PageElement("Кнопка поиска")

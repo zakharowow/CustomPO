@@ -19,6 +19,7 @@ public class BaseClass {
     public static ElementsCollection getCollection(String collectionName) {
         return (ElementsCollection) getElement(collectionName);
     }
+
     public static void initPage(String pageName) {
         HashSet<Object> pagesSet = new HashSet<>();
         Class<?> clazz = BasePages.class;
@@ -31,13 +32,14 @@ public class BaseClass {
                 if (annotationValue.equals(pageName)) {
                     pageToInit = (BaseClass) page.get(clazz.newInstance());
                     initPageElements(pageName, pageToInit);
+                    return;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        Assert.assertNotNull(String.format("Описание страницы [%s] отсутствует в классе Pages", pageName), pageToInit);
-        Assert.assertEquals("В классе Pages присутствуют аннотации дубликаты", pagesSet.size(), pages.length);
+        Assert.assertNotNull(String.format("Описание страницы [%s] отсутствует в классе [%s]", pageName, BasePages.class.getName()), pageToInit);
+        Assert.assertEquals(String.format("В классе [%s] присутствуют аннотации дубликаты", BasePages.class.getName()), pagesSet.size(), pages.length);
     }
 
     private static void initPageElements(String pageName, BaseClass baseClass) {
@@ -56,7 +58,7 @@ public class BaseClass {
             }
         }
         Assert.assertTrue(String.format("На странице [%s] отсутствует описание элементов", pageName), elements.size() > 0);
-        Assert.assertEquals(String.format("На странице %s присутствуют аннотации дубликаты", pageName), fieldsSet.size(), elementsOnPage.length);
+        Assert.assertEquals(String.format("На странице [%s] присутствуют аннотации дубликаты", pageName), fieldsSet.size(), elementsOnPage.length);
         currentPage.put(pageName, elements);
     }
 
