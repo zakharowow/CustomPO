@@ -2,7 +2,7 @@ package steps;
 
 import io.cucumber.java.bg.И;
 
-import static elements.BaseClass.initPage;
+import static base.BasePage.initPage;
 
 public class PageSteps {
 

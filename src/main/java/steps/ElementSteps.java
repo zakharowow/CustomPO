@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.bg.И;
 
 import static com.codeborne.selenide.Condition.visible;
-import static elements.BaseClass.getField;
+import static base.BaseWebElement.getField;
 
 public class ElementSteps {
 

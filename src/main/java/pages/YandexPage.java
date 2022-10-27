@@ -1,5 +1,6 @@
-package elements;
+package pages;
 
+import base.BasePage;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import meta.PageElement;
@@ -8,7 +9,7 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class YandexPage extends BaseClass {
+public class YandexPage extends BasePage {
 
     @PageElement("Закрытие модального окна")
     public SelenideElement closeModal = $(byClassName("modal__close"));

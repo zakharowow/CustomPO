@@ -2,8 +2,8 @@ package steps;
 
 import io.cucumber.java.Before;
 
+import static base.BasePage.initPage;
 import static com.codeborne.selenide.Selenide.open;
-import static elements.BaseClass.initPage;
 
 public class Hooks {
     @Before

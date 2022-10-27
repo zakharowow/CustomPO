@@ -4,7 +4,7 @@ import com.codeborne.selenide.Condition;
 import io.cucumber.java.bg.И;
 
 import static com.codeborne.selenide.CollectionCondition.size;
-import static elements.BaseClass.getCollection;
+import static base.BaseWebElement.getCollection;
 
 public class CollectionSteps {
 
@@ -15,7 +15,7 @@ public class CollectionSteps {
 
     @И("^в коллекции \"(.+)\" производится клик по элементу номер \"(.+)\"$")
     public void clickElementCollection(String collectionName, int number) {
-        getCollection(collectionName).get(number+1).click();
+        getCollection(collectionName).get(number + 1).click();
     }
 
     @И("^в коллекции \"(.+)\" производится клик по элементу с текстом \"(.+)\"$")

@@ -1,15 +1,15 @@
-package elements;
+package pages;
 
+import base.BasePage;
 import com.codeborne.selenide.SelenideElement;
 import meta.PageElement;
 
-import static com.codeborne.selenide.Selectors.byAttribute;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class MainPage extends BaseClass {
+public class MainPage extends BasePage {
     @PageElement("Логотип")
-    public SelenideElement logo = $(byXpath("(//img)[2]"));
+    public SelenideElement logo = $(byAttribute("class","k1zIA rSk4se"));
     @PageElement("Поисковая строка")
     public SelenideElement searchTextField = $(byXpath("(//*[@name='q'])[1]"));
     @PageElement("Кнопка поиска")
