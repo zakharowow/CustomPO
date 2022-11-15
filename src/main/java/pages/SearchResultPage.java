@@ -11,9 +11,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchResultPage extends BasePage {
+    @PageElement(value = "Количество результатов",isLoaded = true)
+    public SelenideElement quantity = $(byId("result-stats"));
+
     @PageElement("Результат поиска")
     public ElementsCollection searchResults = $$(byXpath("//div//h3[not(.//@class='l' or .//@class='q8U8x' or .//text()='Описание')]"));
-
-    @PageElement("Количество результатов")
-    public SelenideElement quantity = $(byId("result-stats"));
 }

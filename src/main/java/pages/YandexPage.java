@@ -10,12 +10,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class YandexPage extends BasePage {
+    @PageElement(value = "Строка поиска", isLoaded = true)
+    public SelenideElement searchField = $(byAttribute("aria-label", "Запрос"));
 
     @PageElement("Закрытие модального окна")
     public SelenideElement closeModal = $(byClassName("modal__close"));
-
-    @PageElement("Строка поиска")
-    public SelenideElement searchField = $(byAttribute("aria-label", "Запрос"));
 
     @PageElement("Найти")
     public SelenideElement searchButton = $(byXpath("//button[.//text()='Найти']"));

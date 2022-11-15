@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PageElement {
     String value();
+    boolean isLoaded() default false;
 }
