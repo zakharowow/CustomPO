@@ -1,13 +1,13 @@
 package helpers;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 
 
 import java.io.File;
 import java.io.IOException;
 
 import static java.lang.String.format;
+import static org.junit.Assert.assertNotNull;
 
 public class Cleaner {
     private static final String fileSeparator = File.separator;
@@ -28,7 +28,7 @@ public class Cleaner {
     private static void clean(String path) {
         new File(path).mkdirs();
         File[] elementsArray = new File(path).listFiles();
-        Assert.assertNotNull(format("Необходимо создать папку %s", path), elementsArray);
+        assertNotNull(format("Необходимо создать папку %s", path), elementsArray);
         for (File element : elementsArray) {
             try {
                 if (element.isFile()) {

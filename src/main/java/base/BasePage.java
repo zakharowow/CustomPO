@@ -4,16 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import pages.AllPages;
 import meta.Page;
 import meta.PageElement;
-import org.junit.Assert;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 import static base.BaseWebElement.getElement;
 import static com.codeborne.selenide.Condition.visible;
 import static java.lang.String.format;
+import static org.junit.Assert.*;
 
 public class BasePage {
     static Map<String, Object> currentPage = new HashMap<>();
@@ -56,8 +54,8 @@ public class BasePage {
                 e.printStackTrace();
             }
         }
-        Assert.assertNotNull(format("Описание страницы [%s] отсутствует в классе [%s]", pageName, AllPages.class.getName()), pageToInit);
-        Assert.assertEquals(format("В классе [%s] присутствуют аннотации дубликаты", AllPages.class.getName()), pagesSet.size(), pages.length);
+        assertNotNull(format("Описание страницы [%s] отсутствует в классе [%s]", pageName, AllPages.class.getName()), pageToInit);
+        assertEquals(format("В классе [%s] присутствуют аннотации дубликаты", AllPages.class.getName()), pagesSet.size(), pages.length);
     }
 
     private static void initPageElements(String pageName, BasePage basePage) {
@@ -78,8 +76,8 @@ public class BasePage {
                 e.printStackTrace();
             }
         }
-        Assert.assertTrue(format("На странице [%s] отсутствует описание элементов", pageName), elements.size() > 0);
-        Assert.assertEquals(format("На странице [%s] присутствуют аннотации дубликаты", pageName), fieldsSet.size(), elementsOnPage.length);
+        assertTrue(format("На странице [%s] отсутствует описание элементов", pageName), elements.size() > 0);
+        assertEquals(format("На странице [%s] присутствуют аннотации дубликаты", pageName), fieldsSet.size(), elementsOnPage.length);
         currentPage.put(pageName, elements);
     }
 }

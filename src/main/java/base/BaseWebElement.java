@@ -2,12 +2,12 @@ package base;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.Assert;
 
 import java.util.HashMap;
 
 import static base.BasePage.getCurrentPage;
 import static java.lang.String.format;
+import static org.junit.Assert.assertNotNull;
 
 public class BaseWebElement {
 
@@ -36,7 +36,7 @@ public class BaseWebElement {
         Object pageElements = getCurrentPage().get(pageName);
         Object element = ((HashMap<?, ?>) pageElements).get(elementName);
         if (!isLoaded) {
-            Assert.assertNotNull(format("На странице [%s] отсутствует описание элемента [%s]", pageName, elementName), element);
+            assertNotNull(format("На странице [%s] отсутствует описание элемента [%s]", pageName, elementName), element);
         }
         return element;
     }
