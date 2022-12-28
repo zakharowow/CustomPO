@@ -4,11 +4,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
-        glue = "src.main.java.steps",
+        plugin = {"timeline:test-output-thread/"},
+        features = "src/main/resources/features",
+        glue = "steps",
+        tags = "@runnn",
         publish = true,
         monochrome = true,
         stepNotifications = true
 )
-public class Runner {
+public class TestRunner {
 }
