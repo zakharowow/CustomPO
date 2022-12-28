@@ -5,10 +5,13 @@ import io.cucumber.java.Scenario;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static base.DuplicateChecker.checkPagesAndElementsDuplicates;
+
 public class ScenarioDataStore {
     private static final HashMap<Thread, ArrayList<Object>> scenarioDataStore = new HashMap<>();
 
     public void initScenarioData(Scenario scenario) {
+        checkPagesAndElementsDuplicates();
         ArrayList<Object> dataList = new ArrayList<>();
         dataList.add(scenario);
         scenarioDataStore.put(Thread.currentThread(), dataList);
@@ -38,5 +41,4 @@ public class ScenarioDataStore {
         }
         return result;
     }
-
 }
