@@ -4,15 +4,16 @@ import io.cucumber.java.Scenario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import static base.DuplicateChecker.checkPagesAndElementsDuplicates;
 
 public class ScenarioDataStore {
-    private static final HashMap<Thread, ArrayList<Object>> scenarioDataStore = new HashMap<>();
+    private static final HashMap<Thread, HashSet<Object>> scenarioDataStore = new HashMap<>();
 
     public void initScenarioData(Scenario scenario) {
         checkPagesAndElementsDuplicates();
-        ArrayList<Object> dataList = new ArrayList<>();
+        HashSet<Object> dataList = new HashSet<>();
         dataList.add(scenario);
         scenarioDataStore.put(Thread.currentThread(), dataList);
     }
@@ -23,10 +24,10 @@ public class ScenarioDataStore {
     }
 
     private static void cleanCurrentPage() {
-        ArrayList<Object> elements = new ArrayList<>(scenarioDataStore.get(Thread.currentThread()));
+        HashSet<Object> elements = new HashSet<>(scenarioDataStore.get(Thread.currentThread()));
         for (Object obj : elements) {
             if (obj instanceof CurrentPage) {
-                scenarioDataStore.get(Thread.currentThread()).remove(elements.indexOf(obj));
+                scenarioDataStore.get(Thread.currentThread()).remove(obj);
             }
         }
     }
