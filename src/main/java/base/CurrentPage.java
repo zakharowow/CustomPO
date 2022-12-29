@@ -22,11 +22,11 @@ public class CurrentPage implements BasePage {
         pageShouldBeLoaded();
     }
 
-    public SelenideElement getElement(String fieldName) {
+    public SelenideElement getSelenideElement(String fieldName) {
         return (SelenideElement) getWebObject(fieldName);
     }
 
-    public ElementsCollection getCollection(String collectionName) {
+    public ElementsCollection getElementsCollection(String collectionName) {
         return (ElementsCollection) getWebObject(collectionName);
     }
 
