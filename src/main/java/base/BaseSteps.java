@@ -7,14 +7,15 @@ import static base.ScenarioDataStore.getCurrentPage;
 
 public class BaseSteps {
 
-    public ElementsCollection getCollection(String collectionName){
+    public ElementsCollection getCollection(String collectionName) {
         return getCurrentPage().getElementsCollection(collectionName);
     }
 
-    public SelenideElement getElement(String elementName){
+    public SelenideElement getElement(String elementName) {
         return getCurrentPage().getSelenideElement(elementName);
     }
-
-
+    public String getPath(String elementName) {
+        return getCurrentPage().getCollectionElementSubPath(elementName);
+    }
 
 }

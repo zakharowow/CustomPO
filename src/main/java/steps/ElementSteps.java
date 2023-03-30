@@ -6,6 +6,8 @@ import io.cucumber.java.bg.И;
 
 import static base.ScenarioDataStore.getCurrentPage;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
 
 public class ElementSteps extends BaseSteps {
 
@@ -30,6 +32,11 @@ public class ElementSteps extends BaseSteps {
         if (element.isDisplayed()) {
             element.click();
         }
+    }
+
+    @И("^на экране присутствует элемент с текстом \"(.+)\"$")
+    public void checkText(String expectedText) {
+        $(byText(expectedText)).shouldBe(visible);
     }
 
 }

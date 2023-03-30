@@ -7,7 +7,9 @@ import meta.PageElement;
 import pages.AllPages;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.visible;
 import static java.lang.String.format;
@@ -30,6 +32,10 @@ public class CurrentPage implements BasePage {
         return (ElementsCollection) getWebObject(collectionName);
     }
 
+    public String getCollectionElementSubPath(String pathName) {
+        return (String) getWebObject(pathName);
+    }
+
     private Object getWebObject(String elementName) {
         return this.currentPage.get(elementName);
     }
@@ -37,6 +43,15 @@ public class CurrentPage implements BasePage {
     private HashMap<String, Object> getPageElements(String pageName) {
         HashMap<String, Object> elements = new HashMap<>();
         Class<? extends BasePage> clazz = getPage(pageName).getClass();
+        if (!clazz.getSuperclass().equals(Object.class)) {
+            elements.putAll(setElements(clazz.getSuperclass(), elements));
+        }
+        elements.putAll(setElements(clazz, elements));
+        assertTrue(format("На странице [%s] отсутствует описание элементов", pageName), elements.size() > 0);
+        return elements;
+    }
+
+    private HashMap<String, Object> setElements(Class<?> clazz, HashMap<String, Object> elements) {
         for (Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true);
             String annotationValue = field.getAnnotation(PageElement.class).value();
@@ -49,7 +64,6 @@ public class CurrentPage implements BasePage {
                 e.printStackTrace();
             }
         }
-        assertTrue(format("На странице [%s] отсутствует описание элементов", pageName), elements.size() > 0);
         return elements;
     }
 

@@ -1,5 +1,6 @@
 package base;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import io.cucumber.java.Scenario;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class ScenarioDataStore {
         checkPagesAndElementsDuplicates();
         HashSet<Object> dataList = new HashSet<>();
         dataList.add(scenario);
+        System.out.println(scenario.getName() + " " + Thread.currentThread());
         scenarioDataStore.put(Thread.currentThread(), dataList);
     }
 

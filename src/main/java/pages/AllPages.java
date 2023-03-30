@@ -8,4 +8,6 @@ public class AllPages {
     public BasePage mainPage = new MainPage();
     @Page("Результат поиска")
     public BasePage resultPage = new SearchPage();
+    @Page("Статья")
+    public BasePage articlePage = new ArticlePage();
 }

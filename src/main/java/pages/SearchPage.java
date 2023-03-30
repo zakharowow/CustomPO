@@ -8,11 +8,12 @@ import meta.PageElement;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class SearchPage implements BasePage {
+public class SearchPage extends FramePage implements BasePage {
     @PageElement(value = "Сортировка результатов", isLoaded = true)
     public final SelenideElement quantity = $x("(//*[@class='tm-navigation-dropdown__button tm-navigation-dropdown__button'])[last()]");
 
     @PageElement("Результат поиска")
     public final ElementsCollection searchResults = $$(byClassName("tm-articles-list__item"));
-
+    @PageElement("Заголовок статьи")
+    public final String resultHeader = ".//h2/a";
 }

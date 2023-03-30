@@ -6,7 +6,7 @@ import meta.PageElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class MainPage implements BasePage {
+public class MainPage extends FramePage implements BasePage {
     @PageElement("Логотип")
     private final SelenideElement logo = $x("//*[@id='app']/div[1]/header/div/div/span");
 
